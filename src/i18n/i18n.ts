@@ -10,21 +10,25 @@ const resources = {
     en: { translation: enLocale },
 };
 
-i18n.use(LanguageDetector)
-    .use(initReactI18next)
-    .init({
-        resources,
-        fallbackLng: 'en',
-        interpolation: {
-            escapeValue: false,
-        },
-        detection: {
-            order: ['cookie', 'localStorage', 'navigator'],
-            caches: ['cookie', 'localStorage'],
-            lookupCookie: 'i18next',
-            lookupLocalStorage: 'i18next',
-            cookieMinutes: 10080,
-        },
-    });
+const isBrowser = typeof window !== 'undefined';
+
+if (isBrowser) {
+    i18n.use(LanguageDetector);
+}
+
+i18n.use(initReactI18next).init({
+    resources,
+    fallbackLng: 'en',
+    interpolation: {
+        escapeValue: false,
+    },
+    detection: {
+        order: ['cookie', 'localStorage', 'navigator'],
+        caches: ['cookie', 'localStorage'],
+        lookupCookie: 'i18next',
+        lookupLocalStorage: 'i18next',
+        cookieMinutes: 10080,
+    },
+});
 
 export default i18n;

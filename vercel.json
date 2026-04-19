@@ -2,11 +2,10 @@
     "$schema": "https://openapi.vercel.sh/vercel.json",
     "buildCommand": "pnpm build:vercel",
     "installCommand": "pnpm install",
-    "outputDirectory": "dist/client",
     "functions": {
         "api/index.mjs": {
             "maxDuration": 10,
-            "includeFiles": "dist/server/**"
+            "includeFiles": "dist/**"
         }
     },
     "headers": [
@@ -21,6 +20,18 @@
         }
     ],
     "rewrites": [
+        {
+            "source": "/assets/(.*)",
+            "destination": "/dist/client/assets/$1"
+        },
+        {
+            "source": "/favicon.svg",
+            "destination": "/dist/client/favicon.svg"
+        },
+        {
+            "source": "/icons.svg",
+            "destination": "/dist/client/icons.svg"
+        },
         {
             "source": "/(.*)",
             "destination": "/api"
