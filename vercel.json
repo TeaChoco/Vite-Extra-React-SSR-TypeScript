@@ -1,9 +1,29 @@
 {
     "$schema": "https://openapi.vercel.sh/vercel.json",
+    "buildCommand": "pnpm build:vercel",
+    "installCommand": "pnpm install",
+    "outputDirectory": "dist/client",
+    "functions": {
+        "api/index.mjs": {
+            "maxDuration": 10,
+            "includeFiles": "dist/server/**"
+        }
+    },
+    "headers": [
+        {
+            "source": "/assets/(.*)",
+            "headers": [
+                {
+                    "key": "Cache-Control",
+                    "value": "public, max-age=31536000, immutable"
+                }
+            ]
+        }
+    ],
     "rewrites": [
         {
             "source": "/(.*)",
-            "destination": "/"
+            "destination": "/api"
         }
     ]
 }

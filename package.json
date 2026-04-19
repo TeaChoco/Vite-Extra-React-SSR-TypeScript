@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "node server",
-    "build": "tsc -b && npm run build:client && npm run build:server",
+    "build": "tsc -b && pnpm run build:client && pnpm run build:server",
+    "build:vercel": "pnpm build && node scripts/postbuild.mjs",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "preview": "cross-env NODE_ENV=production node server"

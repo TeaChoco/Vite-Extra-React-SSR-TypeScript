@@ -40,6 +40,8 @@ app.use("*all", async (req, res) => {
     try {
         /** @type {import('./src/entry-server.ts').render} */
         let render;
+        /** @type {import('./src/entry-server.ts').getHeadForRoute} */
+        let getHeadForRoute;
         /** @type {string} */
         let template;
         let didError = false;
@@ -49,10 +51,14 @@ app.use("*all", async (req, res) => {
             // Always read fresh template in development
             template = await fs.readFile("./index.html", "utf-8");
             template = await vite.transformIndexHtml(url, template);
-            render = (await vite.ssrLoadModule("/src/entry-server.tsx")).render;
+            const devModule = await vite.ssrLoadModule("/src/entry-server.tsx");
+            render = devModule.render;
+            getHeadForRoute = devModule.getHeadForRoute;
         } else {
             template = templateHtml;
-            render = (await import("./dist/server/entry-server.js")).render;
+            const prodModule = await import("./dist/server/entry-server.js");
+            render = prodModule.render;
+            getHeadForRoute = prodModule.getHeadForRoute;
         }
 
         const cookies = req.headers.cookie || "";
@@ -65,6 +71,9 @@ app.use("*all", async (req, res) => {
 
         const langMatch = cookies.match(/i18next=([^;]+)/);
         const lang = langMatch ? langMatch[1] : "en";
+
+        const head = getHeadForRoute(url);
+        template = template.replace("<!--app-head-->", head);
 
         const { pipe, abort } = render(url, lang, {
             async onShellError(error) {
