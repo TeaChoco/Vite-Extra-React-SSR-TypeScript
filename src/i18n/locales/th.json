@@ -1,0 +1,73 @@
+{
+    "nav": {
+        "home": "หน้าหลัก",
+        "about": "เกี่ยวกับ",
+        "socket": "ซ็อกเก็ต"
+    },
+    "home": {
+        "title": "Vite Extra React",
+        "subtitle": "SSR สตาร์ทเทมเพลต",
+        "description": "สตาร์ทเทมเพลต SSR พร้อมใช้งาน ประกอบด้วย TypeScript, React, Vite, Tailwind CSS, i18n, Socket.io และ Zustand — ตั้งค่าพร้อมใช้ทั้งหมด",
+        "features": "ฟีเจอร์",
+        "get_started": "เริ่มต้นใช้งาน",
+        "view_source": "ดูซอร์สโค้ด"
+    },
+    "features": {
+        "ssr": {
+            "title": "Server-Side Rendering",
+            "description": "HTML ที่เรนเดอร์ล่วงหน้าเพื่อการแสดงผลที่รวดเร็ว, SEO, และประสิทธิภาพที่ดีขึ้นพร้อมรองรับ Streaming"
+        },
+        "routing": {
+            "title": "Client-Side Routing",
+            "description": "React Router ที่ใช้ StaticRouter และ BrowserRouter รองรับ SSR สำหรับการนำทางที่ราบรื่น"
+        },
+        "i18n": {
+            "title": "ระบบหลายภาษา",
+            "description": "รองรับหลายภาษาด้วย i18next, ตรวจจับจากคุกกี้, และเรนเดอร์ภาษาฝั่งเซิร์ฟเวอร์"
+        },
+        "theme": {
+            "title": "ระบบธีม",
+            "description": "ธีมมืด/สว่างด้วย Zustand persistence, ซิงค์คุกกี้, และ class toggling รองรับ SSR"
+        },
+        "socket": {
+            "title": "Socket.io",
+            "description": "การสื่อสารแบบเรียลไทม์สองทิศทางผ่านอีเวนต์พร้อมการเชื่อมต่อใหม่อัตโนมัติ"
+        },
+        "state": {
+            "title": "จัดการ State",
+            "description": "Zustand stores พร้อม persist middleware สำหรับธีม, การยืนยันตัวตน, และ socket"
+        }
+    },
+    "about": {
+        "title": "เกี่ยวกับโปรเจกต์นี้",
+        "description": "นี่คือเทมเพลตสาธิตที่แสดงวิธีสร้างแอปพลิเคชัน Vite + React SSR ที่มีฟีเจอร์ครบถ้วน",
+        "tech_stack": "เทคโนโลยีที่ใช้",
+        "architecture": "สถาปัตยกรรม",
+        "architecture_desc": "แอปพลิเคชันใช้เซิร์ฟเวอร์ Express ที่จัดการ SSR พร้อมรองรับ Streaming ฝั่งเซิร์ฟเวอร์ StaticRouter เรนเดอร์ HTML เริ่มต้น และฝั่งไคลเอนต์ hydrateRoot จะรับช่วงต่อจากเซิร์ฟเวอร์ — มอบประสบการณ์ที่ราบรื่นและโต้ตอบได้",
+        "back_home": "กลับหน้าหลัก"
+    },
+    "socket": {
+        "title": "Socket.io สาธิต",
+        "description": "สถานะการเชื่อมต่อแบบเรียลไทม์และการซิงค์จำนวนผู้เล่น",
+        "status": "สถานะการเชื่อมต่อ",
+        "connected": "เชื่อมต่อแล้ว",
+        "disconnected": "ไม่ได้เชื่อมต่อ",
+        "players": "ผู้เล่นออนไลน์",
+        "connect": "เชื่อมต่อ",
+        "disconnect": "ตัดการเชื่อมต่อ",
+        "socket_id": "Socket ID",
+        "no_id": "ยังไม่ได้เชื่อมต่อ"
+    },
+    "theme": {
+        "dark": "มืด",
+        "light": "สว่าง"
+    },
+    "language": {
+        "en": "English",
+        "th": "ไทย"
+    },
+    "footer": {
+        "built_with": "สร้างด้วย",
+        "and": "และ"
+    }
+}

@@ -1,0 +1,73 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "socket": "Socket"
+    },
+    "home": {
+        "title": "Vite Extra React",
+        "subtitle": "SSR Starter Template",
+        "description": "A production-ready SSR starter with TypeScript, React, Vite, Tailwind CSS, i18n, Socket.io, and Zustand — all pre-configured and ready to go.",
+        "features": "Features",
+        "get_started": "Get Started",
+        "view_source": "View Source"
+    },
+    "features": {
+        "ssr": {
+            "title": "Server-Side Rendering",
+            "description": "Pre-rendered HTML for fast first paint, SEO, and improved performance with streaming support."
+        },
+        "routing": {
+            "title": "Client-Side Routing",
+            "description": "React Router with SSR-compatible StaticRouter and BrowserRouter for seamless navigation."
+        },
+        "i18n": {
+            "title": "Internationalization",
+            "description": "Multi-language support with i18next, cookie-based detection, and server-side language rendering."
+        },
+        "theme": {
+            "title": "Theme System",
+            "description": "Dark/Light theme with Zustand persistence, cookie sync, and SSR-compatible class toggling."
+        },
+        "socket": {
+            "title": "Socket.io",
+            "description": "Real-time bidirectional event-based communication with automatic reconnection support."
+        },
+        "state": {
+            "title": "State Management",
+            "description": "Zustand stores with persist middleware for theme, auth, and socket state management."
+        }
+    },
+    "about": {
+        "title": "About This Project",
+        "description": "This is a demonstration template showcasing how to build a full-featured Vite + React SSR application.",
+        "tech_stack": "Technology Stack",
+        "architecture": "Architecture",
+        "architecture_desc": "The application uses a custom Express server that handles SSR with streaming support. On the server, StaticRouter renders the initial HTML, and on the client, hydrateRoot picks up where the server left off — ensuring a smooth, interactive experience.",
+        "back_home": "Back to Home"
+    },
+    "socket": {
+        "title": "Socket.io Demo",
+        "description": "Real-time connection status and player count synchronization.",
+        "status": "Connection Status",
+        "connected": "Connected",
+        "disconnected": "Disconnected",
+        "players": "Players Online",
+        "connect": "Connect",
+        "disconnect": "Disconnect",
+        "socket_id": "Socket ID",
+        "no_id": "Not connected"
+    },
+    "theme": {
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "language": {
+        "en": "English",
+        "th": "ไทย"
+    },
+    "footer": {
+        "built_with": "Built with",
+        "and": "and"
+    }
+}

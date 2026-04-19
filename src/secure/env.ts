@@ -1,0 +1,16 @@
+//-Path: "vite-extra-react-ssr-ts/src/secure/env.ts"
+
+const MODE = String(import.meta.env.VITE_MODE || 'development');
+const HOST = String(import.meta.env.VITE_CLIENT_HOST || '0.0.0.0');
+
+const env = {
+    MODE,
+    HOST,
+    PORT: Number(import.meta.env.VITE_CLIENT_PORT || 8000),
+    API_URL: String(import.meta.env.VITE_API_URL || 'http://127.0.0.1:3000'),
+    API_TOKEN_KEY: String(import.meta.env.VITE_API_TOKEN_KEY || ''),
+} as const;
+
+export const isDev = env.MODE === 'development';
+
+export default env;
