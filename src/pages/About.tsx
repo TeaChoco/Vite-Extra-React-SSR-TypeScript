@@ -1,22 +1,31 @@
 //-Path: "vite-extra-react-ssr-ts/src/pages/About.tsx"
+import {
+    SiVite,
+    SiReact,
+    SiExpress,
+    SiI18Next,
+    SiTypescript,
+    SiTailwindcss,
+    SiSocketdotio,
+    SiReactrouter,
+} from 'react-icons/si';
 import { Link } from 'react-router-dom';
 import Card from '$/components/custom/Card';
 import Badge from '$/components/custom/Badge';
-import { FaArrowLeft } from 'react-icons/fa6';
 import { useTranslation } from 'react-i18next';
 import Button from '$/components/custom/Button';
-import { SiTypescript, SiVite, SiReact, SiTailwindcss, SiExpress, SiSocketdotio, SiZustand, SiI18next, SiReactrouter } from 'react-icons/si';
+import { FaArrowLeft, FaCubesStacked } from 'react-icons/fa6';
 
 const techStack = [
-    { name: 'React 19', color: 'text-[#61DAFB]', icon: <SiReact /> },
     { name: 'Vite 8', color: 'text-[#646CFF]', icon: <SiVite /> },
+    { name: 'React 19', color: 'text-[#61DAFB]', icon: <SiReact /> },
+    { name: 'i18next 26', color: 'text-[#26A69A]', icon: <SiI18Next /> },
     { name: 'TypeScript 6', color: 'text-[#3178C6]', icon: <SiTypescript /> },
     { name: 'Tailwind CSS 4', color: 'text-[#06B6D4]', icon: <SiTailwindcss /> },
-    { name: 'Express 5', color: 'text-[#000000] dark:text-white', icon: <SiExpress /> },
-    { name: 'Socket.io 4', color: 'text-[#010101] dark:text-white', icon: <SiSocketdotio /> },
-    { name: 'Zustand 5', color: 'text-[#433929] dark:text-warning', icon: <SiZustand /> },
-    { name: 'i18next 26', color: 'text-[#26A69A]', icon: <SiI18next /> },
     { name: 'React Router 7', color: 'text-[#CA4245]', icon: <SiReactrouter /> },
+    { name: 'Express 5', color: 'text-[#000000] dark:text-white', icon: <SiExpress /> },
+    { name: 'Zustand 5', color: 'text-[#433929] dark:text-warning', icon: <FaCubesStacked /> },
+    { name: 'Socket.io 4', color: 'text-[#010101] dark:text-white', icon: <SiSocketdotio /> },
 ];
 
 export default function About() {
@@ -55,7 +64,7 @@ export default function About() {
                                 className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl border border-border bg-card text-sm font-semibold transition-all duration-300 hover:border-primary/40 hover:shadow-md hover:-translate-y-0.5`}
                             >
                                 <span className={tech.color}>{tech.icon}</span>
-                                <span className="text-foreground">{tech.name}</span>
+                                <span className='text-foreground'>{tech.name}</span>
                             </span>
                         ))}
                     </div>
