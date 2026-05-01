@@ -1,6 +1,7 @@
 //-Path: "vite-extra-react-ssr-ts/src/entry-server.tsx"
 import App from './App';
 import i18n from './i18n/i18n';
+import env from './secure/env';
 import { StrictMode } from 'react';
 import { StaticRouter } from 'react-router-dom';
 import Providers from './components/layout/Providers';
@@ -47,7 +48,7 @@ export function render(url: string, lang: string = 'en', options?: RenderToPipea
     return renderToPipeableStream(
         <StrictMode>
             <Providers>
-                <StaticRouter location={url}>
+                <StaticRouter location={url} basename={env.BASE}>
                     <App />
                 </StaticRouter>
             </Providers>

@@ -63,7 +63,7 @@ export default function Home() {
 
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 text-center'>
                     <Badge variant='info' className='mb-6'>
-                        ⚡ TypeScript + Vite + React + SSR
+                        ⚡ Vite + React + TypeScript + SSR
                     </Badge>
 
                     <div className='flex items-center justify-center gap-6 mb-8'>

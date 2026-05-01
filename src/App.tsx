@@ -2,22 +2,32 @@
 import Home from './pages/Home';
 import About from './pages/About';
 import Socket from './pages/Socket';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
+import { useEffect, useState } from 'react';
+import Layout from './components/layout/Layout';
+import { Routes, Route, Navigate } from 'react-router-dom';
+
+function SafeNavigate({ to, replace = false }: { to: string; replace?: boolean }) {
+    const [isClient, setIsClient] = useState(false);
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
+
+    // ไม่ render อะไรตอน SSR, render Navigate เฉพาะตอน client-side
+    if (!isClient) return null;
+
+    return <Navigate to={to} replace={replace} />;
+}
 
 export default function App() {
     return (
-        <div className='flex flex-col min-h-dvh overflow-auto'>
-            <Navbar />
-            <main className='flex-1'>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/about' element={<About />} />
-                    <Route path='/socket' element={<Socket />} />
-                </Routes>
-            </main>
-            <Footer />
-        </div>
+        <Routes>
+            <Route path='/' element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path='about' element={<About />} />
+                <Route path='socket' element={<Socket />} />
+                <Route path='*' element={<SafeNavigate to='/' replace />} />
+            </Route>
+        </Routes>
     );
 }

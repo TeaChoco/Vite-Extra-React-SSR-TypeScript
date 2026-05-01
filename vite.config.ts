@@ -1,10 +1,10 @@
 // -Path: "vite-extra-react-ssr-ts/vite.config.ts"
 import path from 'path';
-import { defineConfig } from 'vite';
 import { fileURLToPath } from 'url';
 import react from '@vitejs/plugin-react';
 import tsconfig from './tsconfig.app.json';
 import tailwindcss from '@tailwindcss/vite';
+import { defineConfig, loadEnv, type AliasOptions } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,8 +12,8 @@ const __dirname = path.dirname(__filename);
 /**
  * Generate Vite aliases from tsconfig paths
  */
-const getAliases = () => {
-    const alias: Record<string, string> = {};
+const getAliases = (): AliasOptions => {
+    const alias: AliasOptions = {};
     const paths = tsconfig.compilerOptions.paths || {};
 
     Object.entries(paths).forEach(([key, value]) => {
@@ -26,9 +26,21 @@ const getAliases = () => {
 };
 
 // https://vite.dev/config/
-export default defineConfig({
-    resolve: {
-        alias: getAliases(),
-    },
-    plugins: [react(), tailwindcss()],
+export default defineConfig(({ mode }) => {
+    const env = loadEnv(mode, process.cwd(), '');
+    const base = String(env.VITE_CLIENT_BASE || '/');
+    const port = Number(env.VITE_CLIENT_PORT || 8000);
+    const host = String(env.VITE_CLIENT_HOST || '0.0.0.0');
+    const isDev = env.VITE_MODE === 'development';
+
+    return {
+        base,
+        resolve: { alias: getAliases() },
+        plugins: [react(), tailwindcss()],
+        server: {
+            port,
+            host,
+            strictPort: isDev ? true : undefined,
+        },
+    };
 });

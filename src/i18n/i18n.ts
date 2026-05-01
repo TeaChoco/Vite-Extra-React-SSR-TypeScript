@@ -12,9 +12,7 @@ const resources = {
 
 const isBrowser = typeof window !== 'undefined';
 
-if (isBrowser) {
-    i18n.use(LanguageDetector);
-}
+if (isBrowser) i18n.use(LanguageDetector);
 
 i18n.use(initReactI18next).init({
     resources,

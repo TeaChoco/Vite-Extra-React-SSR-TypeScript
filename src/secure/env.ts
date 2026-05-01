@@ -1,9 +1,11 @@
 //-Path: "vite-extra-react-ssr-ts/src/secure/env.ts"
 
+const BASE = String(import.meta.env.VITE_CLIENT_BASE || '/');
 const MODE = String(import.meta.env.VITE_MODE || 'development');
 const HOST = String(import.meta.env.VITE_CLIENT_HOST || '0.0.0.0');
 
 const env = {
+    BASE,
     MODE,
     HOST,
     PORT: Number(import.meta.env.VITE_CLIENT_PORT || 8000),

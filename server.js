@@ -1,18 +1,20 @@
 //-Path: "vite-extra-react-ssr-ts/server.js"
-import express from "express";
-import fs from "node:fs/promises";
-import { Transform } from "node:stream";
+import dotenv from 'dotenv';
+import express from 'express';
+import fs from 'node:fs/promises';
+import { Transform } from 'node:stream';
+
+dotenv.config();
 
 // Constants
 const ABORT_DELAY = 10000;
-const base = process.env.BASE || "/";
-const port = process.env.PORT || 5173;
-const host = process.env.HOST || "127.0.0.1";
-const isProduction = process.env.NODE_ENV === "production";
+const base = process.env.VITE_CLIENT_BASE || '/';
+const port = process.env.VITE_CLIENT_PORT || 5173;
+const host = process.env.VITE_CLIENT_HOST || '127.0.0.1';
+const isProduction = process.env.VITE_MODE === 'production';
 
 // Cached production assets
-const templateHtml =
-    isProduction ? await fs.readFile("./dist/server/index.html", "utf-8") : "";
+const templateHtml = isProduction ? await fs.readFile('./dist/server/index.html', 'utf-8') : '';
 
 // Create http server
 const app = express();
@@ -21,22 +23,22 @@ const app = express();
 /** @type {import('vite').ViteDevServer | undefined} */
 let vite;
 if (!isProduction) {
-    const { createServer } = await import("vite");
+    const { createServer } = await import('vite');
     vite = await createServer({
         base,
-        appType: "custom",
+        appType: 'custom',
         server: { middlewareMode: true },
     });
     app.use(vite.middlewares);
 } else {
-    const sirv = (await import("sirv")).default;
-    const compression = (await import("compression")).default;
+    const sirv = (await import('sirv')).default;
+    const compression = (await import('compression')).default;
     app.use(compression());
-    app.use(base, sirv("./dist/client", { extensions: [] }));
+    app.use(base, sirv('./dist/client', { extensions: [] }));
 }
 
 // Serve HTML
-app.use("*all", async (req, res) => {
+app.use('*all', async (req, res) => {
     try {
         /** @type {import('./src/entry-server.ts').render} */
         let render;
@@ -45,45 +47,45 @@ app.use("*all", async (req, res) => {
         /** @type {string} */
         let template;
         let didError = false;
-        const url = req.originalUrl.replace(base, "").replace(/^\/?/, "/");
+        const url = req.originalUrl.replace(base, '').replace(/^\/?/, '/');
 
         if (!isProduction) {
             // Always read fresh template in development
-            template = await fs.readFile("./index.html", "utf-8");
+            template = await fs.readFile('./index.html', 'utf-8');
             template = await vite.transformIndexHtml(url, template);
-            const devModule = await vite.ssrLoadModule("/src/entry-server.tsx");
+            const devModule = await vite.ssrLoadModule('/src/entry-server.tsx');
             render = devModule.render;
             getHeadForRoute = devModule.getHeadForRoute;
         } else {
             template = templateHtml;
-            const prodModule = await import("./dist/server/entry-server.js");
+            const prodModule = await import('./dist/server/entry-server.js');
             render = prodModule.render;
             getHeadForRoute = prodModule.getHeadForRoute;
         }
 
-        const cookies = req.headers.cookie || "";
+        const cookies = req.headers.cookie || '';
         const themeMatch = cookies.match(/theme=([^;]+)/);
-        const theme = themeMatch ? themeMatch[1] : "dark";
+        const theme = themeMatch ? themeMatch[1] : 'dark';
 
-        if (theme === "dark") {
+        if (theme === 'dark') {
             template = template.replace('<html lang="en">', '<html lang="en" class="dark">');
         }
 
         const langMatch = cookies.match(/i18next=([^;]+)/);
-        const lang = langMatch ? langMatch[1] : "en";
+        const lang = langMatch ? langMatch[1] : 'en';
 
         const head = getHeadForRoute(url);
-        template = template.replace("<!--app-head-->", head);
+        template = template.replace('<!--app-head-->', head);
 
         const { pipe, abort } = render(url, lang, {
             async onShellError(error) {
                 res.status(500);
-                console.error(error);
-                res.set({ "Content-Type": "text/html" });
+                console.error('onShellError: ', error);
+                res.set({ 'Content-Type': 'text/html' });
                 try {
-                    let html = await fs.readFile("./error.html", "utf-8");
+                    let html = await fs.readFile('./error.html', 'utf-8');
                     html = html.replace(
-                        "<body></body>",
+                        '<body></body>',
                         `<body><h1>Something went wrong</h1><pre style="white-space: pre-wrap;">${error.stack || error.message || error}</pre></body>`,
                     );
                     res.send(html);
@@ -95,7 +97,7 @@ app.use("*all", async (req, res) => {
             },
             onShellReady() {
                 res.status(didError ? 500 : 200);
-                res.set({ "Content-Type": "text/html" });
+                res.set({ 'Content-Type': 'text/html' });
 
                 const [htmlStart, htmlEnd] = template.split(`<!--app-html-->`);
 
@@ -105,7 +107,7 @@ app.use("*all", async (req, res) => {
                         callback();
                     },
                 });
-                transformStream.on("finish", () => {
+                transformStream.on('finish', () => {
                     res.write(htmlEnd);
                     res.end();
                 });
@@ -115,21 +117,21 @@ app.use("*all", async (req, res) => {
             },
             onError(error) {
                 didError = true;
-                console.error(error);
+                console.error('render on Error: ', error);
             },
         });
 
         setTimeout(() => abort(), ABORT_DELAY);
     } catch (error) {
         if (!isProduction && vite) vite.ssrFixStacktrace(error);
-        console.error(error.stack);
+        console.error('Error stack: ', error.stack);
         try {
-            let html = await fs.readFile("./error.html", "utf-8");
+            let html = await fs.readFile('./error.html', 'utf-8');
             html = html.replace(
-                "<body></body>",
+                '<body></body>',
                 `<body><h1>Server Error</h1><pre style="white-space: pre-wrap;">${error.stack || error.message || error}</pre></body>`,
             );
-            res.status(500).set({ "Content-Type": "text/html" }).end(html);
+            res.status(500).set({ 'Content-Type': 'text/html' }).end(html);
         } catch {
             res.status(500).end(error.stack);
         }
@@ -137,6 +139,4 @@ app.use("*all", async (req, res) => {
 });
 
 // Start http server
-app.listen(port, host, () =>
-    console.log(`Server started at http://${host}:${port}`),
-);
+app.listen(port, host, () => console.log(`Server started at http://${host}:${port}${base}`));
