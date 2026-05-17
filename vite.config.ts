@@ -1,9 +1,9 @@
 // -Path: "vite-extra-react-ssr-ts/vite.config.ts"
-import path from 'path';
-import { fileURLToPath } from 'url';
-import react from '@vitejs/plugin-react';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import tsconfig from './tsconfig.app.json';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react-swc';
 import { defineConfig, loadEnv, type AliasOptions } from 'vite';
 
 const __filename = fileURLToPath(import.meta.url);

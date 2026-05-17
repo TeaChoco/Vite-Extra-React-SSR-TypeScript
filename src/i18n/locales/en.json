@@ -2,10 +2,11 @@
     "nav": {
         "home": "Home",
         "about": "About",
-        "socket": "Socket"
+        "socket": "Socket",
+        "threejs": "Three.js"
     },
     "home": {
-        "title": "Vite Extra React",
+        "title": "Vite Extra React TypeScript",
         "subtitle": "SSR Starter Template",
         "description": "A production-ready SSR starter with TypeScript, React, Vite, Tailwind CSS, i18n, Socket.io, and Zustand — all pre-configured and ready to go.",
         "features": "Features",
@@ -68,6 +69,6 @@
     },
     "footer": {
         "built_with": "Built with",
-        "and": "and"
+        "by": "by"
     }
 }

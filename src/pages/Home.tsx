@@ -1,4 +1,4 @@
-//-Path: "vite-extra-react-ssr-ts/src/pages/Home.tsx"
+//-Path: "Vite-React-TypeScript/src/pages/Home.tsx"
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import viteLogo from '$/assets/vite.svg';
@@ -57,13 +57,13 @@ export default function Home() {
         <>
             <section className='relative overflow-hidden py-20 sm:py-28'>
                 <div className='absolute inset-0 -z-10'>
-                    <div className='absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl' />
-                    <div className='absolute bottom-0 right-0 w-[400px] h-[400px] bg-info/5 rounded-full blur-3xl' />
+                    <div className='absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-150 bg-primary/10 rounded-full blur-3xl' />
+                    <div className='absolute bottom-0 right-0 w-100 h-100 bg-info/5 rounded-full blur-3xl' />
                 </div>
 
                 <div className='mx-auto max-w-6xl px-4 sm:px-6 text-center'>
                     <Badge variant='info' className='mb-6'>
-                        ⚡ Vite + React + TypeScript + SSR
+                        ⚡ Vite + React + TypeScript
                     </Badge>
 
                     <div className='flex items-center justify-center gap-6 mb-8'>
@@ -72,24 +72,24 @@ export default function Home() {
                             alt='Vite logo'
                             className='h-16 w-16 drop-shadow-lg animate-pulse'
                         />
-                        <span className='text-4xl text-muted-foreground font-light'>+</span>
+                        <span className='text-4xl text-surface-muted font-light'>+</span>
                         <img
                             src={reactLogo}
                             alt='React logo'
                             className='h-16 w-16 drop-shadow-lg animate-spin'
                             style={{ animationDuration: '8s' }}
                         />
-                        <span className='text-4xl text-muted-foreground font-light'>+</span>
+                        <span className='text-4xl text-surface-muted font-light'>+</span>
                         <SiTypescript className='h-14 w-14 text-[#3178C6] drop-shadow-lg' />
                     </div>
 
-                    <h1 className='text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-foreground mb-4'>
+                    <h1 className='text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-surface-foreground mb-4'>
                         {t('home.title')}
                     </h1>
                     <p className='text-xl sm:text-2xl font-medium text-primary mb-6'>
                         {t('home.subtitle')}
                     </p>
-                    <p className='max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed mb-10'>
+                    <p className='max-w-2xl mx-auto text-lg text-surface-subtle leading-relaxed mb-10'>
                         {t('home.description')}
                     </p>
 
@@ -110,12 +110,12 @@ export default function Home() {
                         </a>
                     </div>
 
-                    <div className='inline-flex items-center gap-4 rounded-2xl border border-border bg-card/50 backdrop-blur-sm px-6 py-4'>
-                        <code className='text-sm text-muted-foreground font-mono'>src/App.tsx</code>
+                    <div className='inline-flex items-center gap-4 rounded-2xl border border-border bg-surface-overlay/50 backdrop-blur-sm px-6 py-4'>
+                        <code className='text-sm text-surface-muted font-mono'>src/App.tsx</code>
                         <div className='w-px h-6 bg-border' />
                         <Button
                             size='sm'
-                            variant='secondary'
+                            variant='surface'
                             onClick={() => setCount((index) => index + 1)}
                         >
                             Count: <span className='text-primary font-bold'>{count}</span>
@@ -124,11 +124,11 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className='py-16 sm:py-24 bg-muted/30'>
+            <section className='py-16 sm:py-24 bg-surface-overlay/30'>
                 <div className='mx-auto max-w-6xl px-4 sm:px-6'>
                     <div className='text-center mb-12'>
                         <Badge className='mb-4'>✨ {t('home.features')}</Badge>
-                        <h2 className='text-3xl sm:text-4xl font-black tracking-tight text-foreground'>
+                        <h2 className='text-3xl sm:text-4xl font-black tracking-tight text-surface-foreground'>
                             {t('home.features')}
                         </h2>
                     </div>

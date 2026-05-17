@@ -6,14 +6,9 @@ import { useThemeStore } from '$/stores/themeStore';
 import { useSocketStore } from '$/stores/socketStore';
 
 export default function Setup({ children }: { children: React.ReactNode }) {
-    const { theme, initializeTheme } = useThemeStore();
+    const { theme } = useThemeStore();
     const { connect, disconnect } = useSocketStore();
     const { setUser, setError, setLoading } = useAuthStore();
-
-    useLayoutEffect(() => {
-        // Initialize theme with stored value on client-side
-        initializeTheme();
-    }, [initializeTheme]);
 
     useLayoutEffect(() => {
         const html = window.document.documentElement;

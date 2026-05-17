@@ -1,5 +1,5 @@
 //-Path: "vite-extra-react-ssr-ts/src/components/custom/Switch.tsx"
-import { useId, useEffect, useState } from 'react';
+import { useId } from 'react';
 
 interface SwitchProps {
     label?: string;
@@ -10,39 +10,12 @@ interface SwitchProps {
 
 export default function Switch({ label, checked, className, onCheckedChange }: SwitchProps) {
     const id = useId();
-    const [isClient, setIsClient] = useState(false);
-
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
-
     const trackClass = `relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 ${
-        checked ? 'bg-primary' : 'bg-slate-300 dark:bg-slate-700'
+        checked ? 'bg-primary' : 'bg-neutral'
     }`;
     const thumbClass = `pointer-events-none block h-4 w-4 rounded-full bg-white shadow-lg ring-0 transition-transform ${
         checked ? 'translate-x-6' : 'translate-x-1'
     }`;
-
-    // Render static version on server to prevent hydration mismatch
-    if (!isClient) {
-        return (
-            <div className={`flex items-center gap-3 ${className || ''}`}>
-                <div
-                    id={id}
-                    role="switch"
-                    className="relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full bg-primary">
-                    <span className="pointer-events-none block h-4 w-4 rounded-full bg-white shadow-lg ring-0 transition-transform translate-x-6" />
-                </div>
-                {label && (
-                    <label
-                        htmlFor={id}
-                        className="text-sm font-bold tracking-tight text-text-light dark:text-text-dark cursor-pointer">
-                        {label}
-                    </label>
-                )}
-            </div>
-        );
-    }
 
     return (
         <div className={`flex items-center gap-3 ${className || ''}`}>
@@ -58,7 +31,7 @@ export default function Switch({ label, checked, className, onCheckedChange }: S
             {label && (
                 <label
                     htmlFor={id}
-                    className="text-sm font-bold tracking-tight text-text-light dark:text-text-dark cursor-pointer">
+                    className="text-sm font-bold tracking-tight text-surface-foreground cursor-pointer">
                     {label}
                 </label>
             )}

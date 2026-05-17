@@ -22,9 +22,13 @@ const routeMetaMap: Record<string, RouteMeta> = {
         title: 'About — Vite Extra React SSR',
         description: 'Explore the architecture and tech stack behind this SSR template',
     },
+    '/three': {
+        title: 'Three.js — Vite Extra React SSR',
+        description: 'Interactive 3D scene using Three.js with React Three Fiber',
+    },
     '/socket': {
-        title: 'Socket.io Demo — Vite Extra React SSR',
-        description: 'Real-time Socket.io integration demo with live player count',
+        title: 'Socket.io — Vite Extra React SSR',
+        description: 'Real-time Socket.io integration with live player count',
     },
 };
 

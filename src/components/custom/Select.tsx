@@ -1,9 +1,10 @@
-//-Path: "vite-extra-react-ssr-ts/src/components/custom/Select.tsx"
+//-Path: "Vite-React-TypeScript/src/components/custom/Select.tsx"
+import { motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa6';
 import { useState, useRef, useEffect, useMemo } from 'react';
 
-interface SelectOptionProps {
-    value: any;
+interface SelectOptionProps<ValueType = string> {
+    value: ValueType;
     label?: string;
     selected?: boolean;
     className?: string;
@@ -12,7 +13,7 @@ interface SelectOptionProps {
     children?: React.ReactNode;
 }
 
-function SelectOption({
+function SelectOption<ValueType>({
     icon,
     label,
     value,
@@ -20,56 +21,57 @@ function SelectOption({
     selected,
     children,
     className,
-}: SelectOptionProps) {
+}: SelectOptionProps<ValueType>) {
     const content = children || label || value;
 
     return (
         <button
             type='button'
             onClick={onClick}
-            className={`w-full px-5 py-3.5 text-left transition-all flex items-center gap-3 hover:bg-primary/5 dark:hover:bg-primary/10 group ${
+            className={`w-full px-4 py-3 text-left transition-all flex items-center gap-3 group ${
                 selected
-                    ? 'bg-primary/10 text-primary font-black'
-                    : 'text-text-light dark:text-text-dark hover:pl-6'
+                    ? 'font-black text-primary bg-primary/15 hover:bg-primary/20'
+                    : 'text-surface-foreground hover:pl-6 hover:bg-primary/10'
             } ${className}`}
         >
             {icon && (
                 <span
                     className={`transition-transform duration-300 group-hover:scale-110 ${
-                        selected
-                            ? 'text-primary'
-                            : 'text-text-muted-light dark:text-text-muted-dark'
+                        selected ? 'text-primary' : 'text-surface-foreground'
                     }`}
                 >
                     {icon}
                 </span>
             )}
-            <span className='text-sm tracking-tight'>{content}</span>
+            <span className='text-sm tracking-tight'>{String(content)}</span>
         </button>
     );
 }
 
-export interface OptionSelectType {
-    value: any;
+export interface OptionSelectType<ValueType = string> {
+    value: ValueType;
     label: string;
     icon?: React.ReactNode;
 }
 
-export interface SelectProps {
+export interface SelectProps<ValueType = string> {
     label?: string;
+    value?: ValueType;
     required?: boolean;
     className?: string;
-    icon?: React.ReactNode;
-    value?: string | number;
-    labelClassName?: string;
     placeholder?: string;
-    options: OptionSelectType[];
+    icon?: React.ReactNode;
+    labelClassName?: string;
+    options: OptionSelectType<ValueType>[];
     containerClassName?: string;
-    onChange?: (event: { target: { value: any } }) => void;
-    children?: (Option: typeof SelectOption, options: OptionSelectType[]) => React.ReactNode;
+    onChange?: (value: ValueType) => void;
+    children?: (
+        Option: typeof SelectOption<ValueType>,
+        options: OptionSelectType<ValueType>[],
+    ) => React.ReactNode;
 }
 
-export default function Select({
+export default function Select<ValueType>({
     icon,
     label,
     value,
@@ -81,7 +83,7 @@ export default function Select({
     placeholder,
     labelClassName,
     containerClassName,
-}: SelectProps) {
+}: SelectProps<ValueType>) {
     const [isOpen, setIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -93,7 +95,7 @@ export default function Select({
                 value: optionValue,
                 label: optionLabel,
                 children: optionChildren,
-            }: SelectOptionProps) => {
+            }: SelectOptionProps<ValueType>) => {
                 if (optionValue === value) {
                     option = {
                         icon: optionIcon,
@@ -111,24 +113,23 @@ export default function Select({
 
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node))
                 setIsOpen(false);
-            }
         };
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const handleSelect = (optionValue: any) => {
-        if (onChange) onChange({ target: { value: optionValue } });
+    const handleSelect = (optionValue: ValueType) => {
+        if (onChange) onChange(optionValue);
         setIsOpen(false);
     };
 
     const displayText =
         selectedOption?.label || selectedOption?.value || placeholder || label || 'Select...';
-    const labelClass = 'flex gap-2 text-sm font-bold text-text-light dark:text-text-dark mb-2 ml-1';
+    const labelClass = 'flex gap-2 text-sm font-bold text-surface-foreground mb-2 ml-1';
     const triggerClass =
-        'w-full px-5 py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-between gap-3 text-left shadow-sm hover:shadow-md';
+        'w-full px-5 py-3.5 rounded-2xl border border-border transition-all duration-300 flex items-center justify-between gap-3 text-left shadow-sm hover:shadow-md';
 
     return (
         <div ref={dropdownRef} className={`relative ${containerClassName || ''}`}>
@@ -145,8 +146,8 @@ export default function Select({
                 onClick={() => setIsOpen((prev) => !prev)}
                 className={`${triggerClass} ${className || ''} ${
                     isOpen
-                        ? 'border-primary ring-4 ring-primary/10 bg-white dark:bg-slate-800'
-                        : 'border-border-light dark:border-border-dark bg-bg-card-light dark:bg-bg-card-dark'
+                        ? 'border-primary ring-4 ring-primary/10 bg-surface-elevated/50'
+                        : 'border-border-foreground bg-surface/20'
                 }`}
             >
                 <div className='flex items-center gap-3 truncate'>
@@ -157,44 +158,47 @@ export default function Select({
                     )}
                     <span
                         className={`text-sm font-medium truncate ${
-                            selectedOption
-                                ? 'text-text-light dark:text-text-dark'
-                                : 'text-text-muted-light dark:text-text-muted-dark'
+                            isOpen ? 'text-primary' : 'text-surface-foreground'
                         }`}
                     >
-                        {displayText}
+                        {String(displayText)}
                     </span>
                 </div>
                 <FaChevronDown
-                    className={`w-3.5 h-3.5 text-text-muted-light dark:text-text-muted-dark transition-transform duration-500 ${
-                        isOpen ? 'rotate-180 text-primary' : ''
+                    className={`w-3.5 h-3.5 transition-transform duration-500 ${
+                        isOpen ? 'rotate-180 text-primary' : 'text-surface-foreground'
                     }`}
                 />
             </button>
 
             {isOpen && (
-                <div className='absolute z-100 mt-2 w-full bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-border-light dark:border-border-dark overflow-hidden py-2 animate-in fade-in zoom-in duration-200 origin-top'>
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95, transformOrigin: 'top' }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.2 }}
+                    className='absolute z-100 mt-2 w-full bg-surface-elevated rounded-2xl shadow-2xl border border-border overflow-hidden'
+                >
                     {children
                         ? children(
-                              ({ value: optionValue, selected, ...optionProps }: any) => (
-                                  <SelectOption
+                              ({ value: optionValue, selected, ...optionProps }) => (
+                                  <SelectOption<ValueType>
                                       {...optionProps}
                                       value={optionValue}
-                                      selected={selected || value === optionValue}
                                       onClick={() => handleSelect(optionValue)}
+                                      selected={selected || value === optionValue}
                                   />
                               ),
                               options,
                           )
                         : options.map((option) => (
-                              <SelectOption
-                                  key={option.value}
+                              <SelectOption<ValueType>
+                                  key={String(option.value)}
                                   {...option}
                                   selected={value === option.value}
                                   onClick={() => handleSelect(option.value)}
                               />
                           ))}
-                </div>
+                </motion.div>
             )}
         </div>
     );

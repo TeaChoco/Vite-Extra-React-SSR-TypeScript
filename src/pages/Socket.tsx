@@ -20,10 +20,10 @@ export default function Socket() {
                         />
                         {isConnected ? t('socket.connected') : t('socket.disconnected')}
                     </Badge>
-                    <h1 className='text-4xl sm:text-5xl font-black tracking-tighter text-foreground mb-6'>
+                    <h1 className='text-4xl sm:text-5xl font-black tracking-tighter text-surface-foreground mb-6'>
                         {t('socket.title')}
                     </h1>
-                    <p className='max-w-2xl mx-auto text-lg text-muted-foreground leading-relaxed'>
+                    <p className='max-w-2xl mx-auto text-lg text-surface-subtle leading-relaxed'>
                         {t('socket.description')}
                     </p>
                 </div>
@@ -31,8 +31,8 @@ export default function Socket() {
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8'>
                     <Card icon={<FaPlug className='w-5 h-5' />} title={t('socket.status')}>
                         <div className='mt-4 space-y-3'>
-                            <div className='flex items-center justify-between rounded-xl bg-muted/50 px-4 py-3'>
-                                <span className='text-sm text-muted-foreground'>
+                            <div className='flex items-center justify-between rounded-xl bg-surface-overlay/50 px-4 py-3'>
+                                <span className='text-sm text-surface-subtle'>
                                     {t('socket.status')}
                                 </span>
                                 <Badge variant={isConnected ? 'success' : 'error'}>
@@ -42,11 +42,11 @@ export default function Socket() {
                                     {isConnected ? t('socket.connected') : t('socket.disconnected')}
                                 </Badge>
                             </div>
-                            <div className='flex items-center justify-between rounded-xl bg-muted/50 px-4 py-3'>
-                                <span className='text-sm text-muted-foreground'>
+                            <div className='flex items-center justify-between rounded-xl bg-surface-overlay/50 px-4 py-3'>
+                                <span className='text-sm text-surface-subtle'>
                                     {t('socket.socket_id')}
                                 </span>
-                                <code className='text-xs font-mono text-foreground bg-card px-2 py-1 rounded-lg border border-border'>
+                                <code className='text-xs font-mono text-surface-foreground bg-surface-elevated px-2 py-1 rounded-lg border border-border'>
                                     {socket?.id || t('socket.no_id')}
                                 </code>
                             </div>
@@ -55,12 +55,12 @@ export default function Socket() {
 
                     <Card icon={<FaUsers className='w-5 h-5' />} title={t('socket.players')}>
                         <div className='mt-4'>
-                            <div className='flex items-center justify-center rounded-xl bg-muted/50 px-4 py-8'>
+                            <div className='flex items-center justify-center rounded-xl bg-surface-elevated/50 px-4 py-8'>
                                 <div className='text-center'>
                                     <p className='text-5xl font-black text-primary mb-2'>
                                         {playerCount}
                                     </p>
-                                    <p className='text-sm text-muted-foreground'>
+                                    <p className='text-sm text-surface-subtle'>
                                         {t('socket.players')}
                                     </p>
                                 </div>
