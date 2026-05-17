@@ -9,10 +9,11 @@
     "build:ssg": "pnpm build && nodemon scripts/prerender.mjs",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "preview": "cross-env VITE_MODE=production VITE_CLIENT_BASE=/TeaChoco/ tsx server.ts",
+    "preview": "pnpm run build:client && wrangler dev",
     "serve": "cross-env VITE_MODE=production VITE_CLIENT_BASE=/TeaChoco/ tsx server.ts",
     "lint": "eslint .",
-    "prerender": "tsx prerender.ts"
+    "prerender": "tsx prerender.ts",
+    "deploy": "pnpm run build:client && wrangler deploy"
   },
   "dependencies": {
     "@react-three/drei": "^10.7.7",
@@ -39,6 +40,7 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.37.1",
     "@eslint/js": "^10.0.1",
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.6",
@@ -58,6 +60,7 @@
     "tailwindcss": "^4.2.4",
     "tsx": "^4.22.1",
     "typescript": "~6.0.3",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "wrangler": "^4.92.0"
   }
 }
