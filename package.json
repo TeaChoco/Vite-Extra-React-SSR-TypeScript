@@ -4,16 +4,20 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server",
+    "dev": "tsx server.ts",
     "build": "tsc -b && pnpm run build:client && pnpm run build:server",
-    "build:ssg": "pnpm build && node scripts/prerender.mjs",
+    "build:ssg": "pnpm build && nodemon scripts/prerender.mjs",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
-    "preview": "cross-env NODE_ENV=production node server"
+    "preview": "cross-env VITE_MODE=production VITE_CLIENT_BASE=/TeaChoco/ tsx server.ts",
+    "serve": "cross-env VITE_MODE=production VITE_CLIENT_BASE=/TeaChoco/ tsx server.ts",
+    "lint": "eslint .",
+    "prerender": "tsx prerender.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.4",
     "axios": "^1.15.2",
+    "chalk": "^5.6.2",
     "compression": "^1.8.1",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
@@ -30,6 +34,8 @@
     "zustand": "^5.0.12"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/compression": "^1.8.1",
     "@types/express": "^5.0.6",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
@@ -37,8 +43,13 @@
     "@vitejs/plugin-react": "^6.0.1",
     "autoprefixer": "^10.5.0",
     "cross-env": "^10.1.0",
+    "eslint": "^10.4.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "nodemon": "^3.1.14",
     "postcss": "^8.5.12",
     "tailwindcss": "^4.2.4",
+    "tsx": "^4.22.1",
     "typescript": "~6.0.3",
     "vite": "^8.0.10"
   }
