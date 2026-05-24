@@ -1,5 +1,5 @@
-// -Path: "vite-extra-react-ssr-ts/src/pages/Threejs.tsx"
-import Screen from "$/components/screen/Screen";
+﻿// -Path: 'Vite-Extra-React-SSR-TypeScript/src/pages/Threejs.tsx"
+import Screen from "~/components/screen/Screen";
 
 export default function Threejs() {
     return (

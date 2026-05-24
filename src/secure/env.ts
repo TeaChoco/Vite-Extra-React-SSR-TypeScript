@@ -1,4 +1,4 @@
-//-Path: "vite-extra-react-ssr-ts/src/secure/env.ts"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/secure/env.ts"
 
 const BASE = String(import.meta.env.VITE_CLIENT_BASE || '/');
 const MODE = String(import.meta.env.VITE_MODE || 'development');

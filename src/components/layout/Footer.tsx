@@ -1,4 +1,4 @@
-//-Path: "Vite-React-TypeScript/src/components/layout/Footer.tsx"
+﻿//-Path: "Vite-React-TypeScript/src/components/layout/Footer.tsx"
 import { useTranslation } from 'react-i18next';
 import type { IconType } from 'react-icons/lib';
 import { FaGithub, FaBook, FaRocket } from 'react-icons/fa';

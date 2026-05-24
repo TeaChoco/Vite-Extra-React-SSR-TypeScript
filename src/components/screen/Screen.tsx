@@ -1,4 +1,4 @@
-// -Path: "vite-react-typescript/src/components/screen/Screen.tsx"
+﻿// -Path: "vite-react-typescript/src/components/screen/Screen.tsx"
 import { Suspense } from 'react';
 import RotatingBox from './RotatingBox';
 import { Canvas } from '@react-three/fiber';

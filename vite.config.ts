@@ -1,4 +1,4 @@
-// -Path: "vite-extra-react-ssr-ts/vite.config.ts"
+// -Path: 'Vite-Extra-React-SSR-TypeScript/vite.config.ts"
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import tsconfig from './tsconfig.app.json';

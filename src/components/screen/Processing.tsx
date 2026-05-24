@@ -1,4 +1,4 @@
-// -Path: "vite-react-typescript/src/components/screen/Processing.tsx"
+﻿// -Path: "vite-react-typescript/src/components/screen/Processing.tsx"
 import { useEffect, useState } from 'react';
 
 export default function Processing({

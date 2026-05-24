@@ -1,4 +1,4 @@
-//-Path: "Vite-React-TypeScript/src/components/custom/Select.tsx"
+﻿//-Path: "Vite-React-TypeScript/src/components/custom/Select.tsx"
 import { motion } from 'framer-motion';
 import { FaChevronDown } from 'react-icons/fa6';
 import { useState, useRef, useEffect, useMemo } from 'react';

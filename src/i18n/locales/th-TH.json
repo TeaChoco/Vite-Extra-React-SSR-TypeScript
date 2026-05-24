@@ -1,0 +1,162 @@
+{
+    "nav": {
+        "home": "หน้าหลัก",
+        "about": "เกี่ยวกับ",
+        "auth": "ยืนยันตัวตน",
+        "socket": "ซ็อกเก็ต",
+        "threejs": "Three.js"
+    },
+    "home": {
+        "title": "Vite Extra React",
+        "subtitle": "SSR สตาร์ทเทมเพลต",
+        "description": "สตาร์ทเทมเพลต SSR พร้อมใช้งาน ประกอบด้วย TypeScript, React, Vite, Tailwind CSS, i18n, Socket.io และ Zustand — ตั้งค่าพร้อมใช้ทั้งหมด",
+        "features": "ฟีเจอร์",
+        "get_started": "เริ่มต้นใช้งาน",
+        "view_source": "ดูซอร์สโค้ด"
+    },
+    "features": {
+        "ssr": {
+            "title": "Server-Side Rendering",
+            "description": "HTML ที่เรนเดอร์ล่วงหน้าเพื่อการแสดงผลที่รวดเร็ว, SEO, และประสิทธิภาพที่ดีขึ้นพร้อมรองรับ Streaming"
+        },
+        "routing": {
+            "title": "Client-Side Routing",
+            "description": "React Router ที่ใช้ StaticRouter และ BrowserRouter รองรับ SSR สำหรับการนำทางที่ราบรื่น"
+        },
+        "i18n": {
+            "title": "ระบบหลายภาษา",
+            "description": "รองรับหลายภาษาด้วย i18next, ตรวจจับจากคุกกี้, และเรนเดอร์ภาษาฝั่งเซิร์ฟเวอร์"
+        },
+        "theme": {
+            "title": "ระบบธีม",
+            "description": "ธีมมืด/สว่างด้วย Zustand persistence, ซิงค์คุกกี้, และ class toggling รองรับ SSR"
+        },
+        "socket": {
+            "title": "Socket.io",
+            "description": "การสื่อสารแบบเรียลไทม์สองทิศทางผ่านอีเวนต์พร้อมการเชื่อมต่อใหม่อัตโนมัติ"
+        },
+        "state": {
+            "title": "จัดการ State",
+            "description": "Zustand stores พร้อม persist middleware สำหรับธีม, การยืนยันตัวตน, และ socket"
+        }
+    },
+    "about": {
+        "title": "เกี่ยวกับโปรเจกต์นี้",
+        "description": "นี่คือเทมเพลตสาธิตที่แสดงวิธีสร้างแอปพลิเคชัน Vite + React SSR ที่มีฟีเจอร์ครบถ้วน",
+        "tech_stack": "เทคโนโลยีที่ใช้",
+        "architecture": "สถาปัตยกรรม",
+        "architecture_desc": "แอปพลิเคชันใช้เซิร์ฟเวอร์ Express ที่จัดการ SSR พร้อมรองรับ Streaming ฝั่งเซิร์ฟเวอร์ StaticRouter เรนเดอร์ HTML เริ่มต้น และฝั่งไคลเอนต์ hydrateRoot จะรับช่วงต่อจากเซิร์ฟเวอร์ — มอบประสบการณ์ที่ราบรื่นและโต้ตอบได้",
+        "back_home": "กลับหน้าหลัก"
+    },
+    "socket": {
+        "badge": "เรียลไทม์",
+        "title": "สาธิตการเชื่อมต่อ Socket.io",
+        "description": "สถานะการเชื่อมต่อแบบเรียลไทม์และการซิงค์จำนวนผู้เล่น",
+        "status": "สถานะการเชื่อมต่อ",
+        "connected": "เชื่อมต่อแล้ว",
+        "disconnected": "ไม่ได้เชื่อมต่อ",
+        "players": "ผู้เล่นออนไลน์",
+        "connect": "เชื่อมต่อ",
+        "disconnect": "ตัดการเชื่อมต่อ",
+        "socket_id": "Socket ID",
+        "no_id": "ยังไม่ได้เชื่อมต่อ",
+        "features_title": "ความสามารถ",
+        "feature_realtime_title": "การสื่อสารแบบเรียลไทม์",
+        "feature_realtime_desc": "การสื่อสารแบบสองทิศทางผ่านอีเวนต์ระหว่างไคลเอนต์และเซิร์ฟเวอร์พร้อมรองรับการเชื่อมต่อใหม่อัตโนมัติ",
+        "feature_websocket_title": "โปรโตคอล WebSocket",
+        "feature_websocket_desc": "การสื่อสารแบบฟูลดูเพล็กซ์ที่มีประสิทธิภาพผ่านการเชื่อมต่อ TCP เดียวด้วยเวลาแฝงที่น้อยที่สุด",
+        "feature_scalable_title": "Rooms และ Namespaces",
+        "feature_scalable_desc": "รองรับการกระจายเสียงตามช่องทาง, ห้อง, เนมสเปซ, และการปรับขนาดแนวนอนด้วย adapters"
+    },
+    "auth": {
+        "badge": "ทดสอบการยืนยันตัวตน",
+        "title": "การยืนยันตัวตน",
+        "description": "ทดสอบระบบยืนยันตัวตนกับเซิร์ฟเวอร์ — เข้าสู่ระบบด้วยอีเมล/รหัสผ่าน หรือ Google OAuth ตรวจสอบสถานะ และออกจากระบบ",
+        "login_title": "เข้าสู่ระบบ",
+        "email": "อีเมล",
+        "email_placeholder": "กรอกอีเมลของคุณ",
+        "password": "รหัสผ่าน",
+        "password_placeholder": "กรอกรหัสผ่านของคุณ",
+        "login_button": "เข้าสู่ระบบ",
+        "or": "หรือ",
+        "google_login": "เข้าสู่ระบบด้วย Google",
+        "status_title": "สถานะการยืนยันตัวตน",
+        "current_status": "สถานะปัจจุบัน",
+        "checking": "กำลังตรวจสอบ...",
+        "authenticated": "ยืนยันตัวตนแล้ว",
+        "not_authenticated": "ยังไม่ได้ยืนยันตัวตน",
+        "unknown_user": "ผู้ใช้ไม่ทราบชื่อ",
+        "no_email": "ไม่มีอีเมล",
+        "user_id": "รหัสผู้ใช้",
+        "joined": "เข้าร่วมเมื่อ",
+        "check_auth": "ตรวจสอบสถานะ",
+        "logout_button": "ออกจากระบบ",
+        "back_home": "กลับหน้าหลัก",
+        "login_success": "เข้าสู่ระบบสำเร็จ",
+        "login_failed": "เข้าสู่ระบบล้มเหลว กรุณาตรวจสอบข้อมูลอีกครั้ง",
+        "logout_success": "ออกจากระบบสำเร็จ",
+        "logout_failed": "ออกจากระบบล้มเหลว",
+        "register_title": "สร้างบัญชี",
+        "name": "ชื่อ",
+        "name_placeholder": "กรอกชื่อของคุณ",
+        "register_button": "สมัครสมาชิก",
+        "register_success": "สมัครสมาชิกสำเร็จ",
+        "register_failed": "สมัครสมาชิกล้มเหลว",
+        "data_title": "ข้อมูลผู้ใช้",
+        "role": "บทบาท",
+        "last_login": "เข้าสู่ระบบล่าสุด",
+        "copy_id": "คัดลอก ID",
+        "copied": "คัดลอกแล้ว!",
+        "edit_name": "แก้ไขชื่อ",
+        "save": "บันทึก",
+        "cancel": "ยกเลิก",
+        "name_updated": "อัปเดตชื่อแล้ว",
+        "name_update_failed": "ไม่สามารถอัปเดตชื่อได้",
+        "change_password_title": "เปลี่ยนรหัสผ่าน",
+        "current_password": "รหัสผ่านปัจจุบัน",
+        "new_password": "รหัสผ่านใหม่",
+        "change_password_button": "อัปเดตรหัสผ่าน",
+        "password_changed": "เปลี่ยนรหัสผ่านสำเร็จ",
+        "password_change_failed": "เปลี่ยนรหัสผ่านล้มเหลว",
+        "delete_account": "ลบบัญชี",
+        "delete_account_confirm": "แน่ใจหรือไม่? การกระทำนี้ไม่สามารถยกเลิกได้",
+        "delete_account_button": "ลบบัญชีของฉัน",
+        "account_deleted": "ลบบัญชีสำเร็จ",
+        "google_linked": "บัญชี Google",
+        "invalid_token": "โทเค็นการยืนยันตัวตนไม่ถูกต้องหรือหมดอายุ"
+    },
+    "threejs": {
+        "badge": "กราฟิก 3D",
+        "title": "ฉาก Three.js แบบโต้ตอบ",
+        "description": "กราฟิก 3D แบบโต้ตอบที่ขับเคลื่อนด้วย Three.js และ React-three-fiber — สำรวจรูปทรงเรขาคณิตและการเรนเดอร์แบบเรียลไทม์",
+        "features_title": "ความสามารถ",
+        "feature_renderer_title": "WebGL เรนเดอเรอร์",
+        "feature_renderer_desc": "การเรนเดอร์ 3D ด้วยความเร็วสูงผ่าน WebGL สำหรับกราฟิกประสิทธิภาพสูงบนเบราว์เซอร์ที่ทันสมัยทั้งหมด",
+        "feature_interaction_title": "การควบคุมแบบโต้ตอบ",
+        "feature_interaction_desc": "การควบคุมแบบ Orbit ช่วยให้หมุน เลื่อน และซูมฉาก 3D ได้ด้วยเมาส์และการสัมผัสที่เข้าใจง่าย",
+        "feature_shapes_title": "รูปทรงหลากหลาย",
+        "feature_shapes_desc": "รูปทรง 3D หลากหลายแบบที่มีวัสดุ สี และแอนิเมชันแบบเรียลไทม์ที่แตกต่างกันในฉากเดียวกัน",
+        "loading": "กำลังโหลดฉาก 3D..."
+    },
+    "theme": {
+        "dark": "มืด",
+        "light": "สว่าง"
+    },
+    "common": {
+        "error": {
+            "oops": "อุ๊ปส์!",
+            "unexpected": "เกิดข้อผิดพลาดที่ไม่คาดคิด",
+            "notFound": "ไม่พบหน้าที่ขอ"
+        }
+    },
+    "notfound": {
+        "title": "ไม่พบหน้า",
+        "description": "หน้าที่คุณกำลังมองหาไม่มีอยู่หรือถูกย้ายไปแล้ว",
+        "back_home": "กลับหน้าหลัก",
+        "error_code": "404"
+    },
+    "footer": {
+        "built_with": "สร้างด้วย",
+        "by": "โดย"
+    }
+}

@@ -1,13 +1,13 @@
-//-Path: "Vite-React-TypeScript/src/pages/Home.tsx"
+﻿//-Path: "Vite-React-TypeScript/src/pages/Home.tsx"
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import viteLogo from '$/assets/vite.svg';
-import reactLogo from '$/assets/react.svg';
-import Card from '$/components/custom/Card';
-import Badge from '$/components/custom/Badge';
+import viteLogo from '~/assets/vite.svg';
+import reactLogo from '~/assets/react.svg';
+import Card from '~/components/custom/Card';
+import Badge from '~/components/custom/Badge';
 import { SiTypescript } from 'react-icons/si';
 import { useTranslation } from 'react-i18next';
-import Button from '$/components/custom/Button';
+import Button from '~/components/custom/Button';
 import { FaBolt, FaGlobe, FaRoute, FaServer, FaPalette, FaCubesStacked } from 'react-icons/fa6';
 
 export default function Home() {

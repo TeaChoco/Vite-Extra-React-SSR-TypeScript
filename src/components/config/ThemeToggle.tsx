@@ -1,6 +1,6 @@
-//-Path: "TeaChoco-Portfolio/client/src/components/ThemeToggle.tsx"
+﻿//-Path: "TeaChoco-Portfolio/client/src/components/ThemeToggle.tsx"
 import { FaSun, FaMoon } from 'react-icons/fa6';
-import { useThemeStore } from '$/stores/themeStore';
+import { useThemeStore } from '~/stores/theme.store';
 
 export default function ThemeToggle() {
     const { theme, toggleTheme } = useThemeStore();

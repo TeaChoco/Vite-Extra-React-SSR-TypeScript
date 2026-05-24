@@ -1,4 +1,4 @@
-// -Path: "vite-extra-react-ssr-ts/src/stores/themeStore.ts"
+﻿// -Path: 'Vite-Extra-React-SSR-TypeScript/src/stores/theme.store.ts"
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

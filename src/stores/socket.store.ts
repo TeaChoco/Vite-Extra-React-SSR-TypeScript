@@ -1,5 +1,5 @@
-//-Path: "vite-extra-react-ssr-ts/src/stores/socketStore.ts"
-import env from '$/secure/env';
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/stores/socket.store.ts"
+import env from '~/secure/env';
 import { create } from 'zustand';
 import { io, Socket } from 'socket.io-client';
 

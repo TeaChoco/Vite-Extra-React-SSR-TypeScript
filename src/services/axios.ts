@@ -1,6 +1,6 @@
-//-Path: "vite-extra-react-ssr-ts/src/services/axios.ts"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/services/axios.ts"
 import axios from 'axios';
-import env from '$/secure/env';
+import env from '~/secure/env';
 
 const serverRest = axios.create({
     baseURL: env.API_URL,

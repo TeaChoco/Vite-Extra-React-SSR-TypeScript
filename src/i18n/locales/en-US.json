@@ -1,0 +1,162 @@
+{
+    "nav": {
+        "home": "Home",
+        "about": "About",
+        "auth": "Authentication",
+        "socket": "Socket",
+        "threejs": "Three.js"
+    },
+    "home": {
+        "title": "Vite Extra React TypeScript",
+        "subtitle": "SSR Starter Template",
+        "description": "A production-ready SSR starter with TypeScript, React, Vite, Tailwind CSS, i18n, Socket.io, and Zustand — all pre-configured and ready to go.",
+        "features": "Features",
+        "get_started": "Get Started",
+        "view_source": "View Source"
+    },
+    "features": {
+        "ssr": {
+            "title": "Server-Side Rendering",
+            "description": "Pre-rendered HTML for fast first paint, SEO, and improved performance with streaming support."
+        },
+        "routing": {
+            "title": "Client-Side Routing",
+            "description": "React Router with SSR-compatible StaticRouter and BrowserRouter for seamless navigation."
+        },
+        "i18n": {
+            "title": "Internationalization",
+            "description": "Multi-language support with i18next, cookie-based detection, and server-side language rendering."
+        },
+        "theme": {
+            "title": "Theme System",
+            "description": "Dark/Light theme with Zustand persistence, cookie sync, and SSR-compatible class toggling."
+        },
+        "socket": {
+            "title": "Socket.io",
+            "description": "Real-time bidirectional event-based communication with automatic reconnection support."
+        },
+        "state": {
+            "title": "State Management",
+            "description": "Zustand stores with persist middleware for theme, auth, and socket state management."
+        }
+    },
+    "about": {
+        "title": "About This Project",
+        "description": "This is a demonstration template showcasing how to build a full-featured Vite + React SSR application.",
+        "tech_stack": "Technology Stack",
+        "architecture": "Architecture",
+        "architecture_desc": "The application uses a custom Express server that handles SSR with streaming support. On the server, StaticRouter renders the initial HTML, and on the client, hydrateRoot picks up where the server left off — ensuring a smooth, interactive experience.",
+        "back_home": "Back to Home"
+    },
+    "socket": {
+        "badge": "Real-time",
+        "title": "Socket.io Connection Demo",
+        "description": "Real-time connection status and player count synchronization.",
+        "status": "Connection Status",
+        "connected": "Connected",
+        "disconnected": "Disconnected",
+        "players": "Players Online",
+        "connect": "Connect",
+        "disconnect": "Disconnect",
+        "socket_id": "Socket ID",
+        "no_id": "Not connected",
+        "features_title": "Capabilities",
+        "feature_realtime_title": "Real-time Communication",
+        "feature_realtime_desc": "Bidirectional event-based communication between client and server with automatic reconnection support.",
+        "feature_websocket_title": "WebSocket Protocol",
+        "feature_websocket_desc": "Efficient full-duplex communication over a single TCP connection with minimal latency overhead.",
+        "feature_scalable_title": "Rooms & Namespaces",
+        "feature_scalable_desc": "Built-in support for channel-based broadcasting, rooms, namespaces, and horizontal scaling with adapters."
+    },
+    "auth": {
+        "badge": "Authentication Testing",
+        "title": "Authentication",
+        "description": "Test your server authentication flow — login with email/password or Google OAuth, check auth status, and sign out.",
+        "login_title": "Sign In",
+        "email": "Email",
+        "email_placeholder": "Enter your email",
+        "password": "Password",
+        "password_placeholder": "Enter your password",
+        "login_button": "Sign In",
+        "or": "OR",
+        "google_login": "Continue with Google",
+        "status_title": "Auth Status",
+        "current_status": "Current Status",
+        "checking": "Checking...",
+        "authenticated": "Authenticated",
+        "not_authenticated": "Not Authenticated",
+        "unknown_user": "Unknown User",
+        "no_email": "No email",
+        "user_id": "User ID",
+        "joined": "Joined",
+        "check_auth": "Check Auth Status",
+        "logout_button": "Sign Out",
+        "back_home": "Back to Home",
+        "login_success": "Login successful",
+        "login_failed": "Login failed. Please check your credentials.",
+        "logout_success": "Signed out successfully",
+        "logout_failed": "Sign out failed",
+        "register_title": "Create Account",
+        "name": "Name",
+        "name_placeholder": "Enter your name",
+        "register_button": "Sign Up",
+        "register_success": "Registration successful",
+        "register_failed": "Registration failed",
+        "data_title": "User Data",
+        "role": "Role",
+        "last_login": "Last Login",
+        "copy_id": "Copy ID",
+        "copied": "Copied!",
+        "edit_name": "Edit name",
+        "save": "Save",
+        "cancel": "Cancel",
+        "name_updated": "Name updated",
+        "name_update_failed": "Failed to update name",
+        "change_password_title": "Change Password",
+        "current_password": "Current Password",
+        "new_password": "New Password",
+        "change_password_button": "Update Password",
+        "password_changed": "Password changed successfully",
+        "password_change_failed": "Failed to change password",
+        "delete_account": "Delete Account",
+        "delete_account_confirm": "Are you sure? This cannot be undone.",
+        "delete_account_button": "Delete My Account",
+        "account_deleted": "Account deleted",
+        "google_linked": "Google Account",
+        "invalid_token": "Invalid or expired authentication token"
+    },
+    "threejs": {
+        "badge": "3D Graphics",
+        "title": "Three.js Interactive Scene",
+        "description": "Interactive 3D graphics powered by Three.js with React-three-fiber — explore geometric shapes and real-time rendering.",
+        "features_title": "Capabilities",
+        "feature_renderer_title": "WebGL Renderer",
+        "feature_renderer_desc": "Hardware-accelerated 3D rendering using WebGL for high-performance graphics across all modern browsers.",
+        "feature_interaction_title": "Interactive Controls",
+        "feature_interaction_desc": "Orbit controls allow you to rotate, pan, and zoom around the 3D scene with intuitive mouse and touch gestures.",
+        "feature_shapes_title": "Multiple Geometries",
+        "feature_shapes_desc": "Various 3D shapes with different materials, colors, and real-time animations rendered in a unified scene.",
+        "loading": "Loading 3D Scene..."
+    },
+    "theme": {
+        "dark": "Dark",
+        "light": "Light"
+    },
+    "common": {
+        "error": {
+            "oops": "Oops!",
+            "unexpected": "Something went wrong!",
+            "notFound": "The page you are looking for doesn't exist or has been moved."
+        }
+    },
+    "notfound": {
+        "title": "Page Not Found",
+        "description": "The page you are looking for doesn't exist or has been moved.",
+        "back_home": "Back to Home",
+        "error_code": "404"
+    },
+    "footer": {
+        "built_with": "Built with",
+        "by": "by"
+    }
+}

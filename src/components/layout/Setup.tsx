@@ -1,9 +1,9 @@
-//-Path: "vite-extra-react-ssr-ts/src/components/layout/Setup.tsx"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/components/layout/Setup.tsx"
 import { useLayoutEffect } from 'react';
-import { authAPI } from '$/services/auth';
-import { useAuthStore } from '$/stores/authStore';
-import { useThemeStore } from '$/stores/themeStore';
-import { useSocketStore } from '$/stores/socketStore';
+import { authAPI } from '~/services/auth';
+import { useAuthStore } from '~/stores/auth.store';
+import { useThemeStore } from '~/stores/theme.store';
+import { useSocketStore } from '~/stores/socket.store';
 
 export default function Setup({ children }: { children: React.ReactNode }) {
     const { theme } = useThemeStore();

@@ -1,4 +1,4 @@
-# -Path: "vite-extra-react-ssr-ts/.github/workflows/deploy.yml"
+# -Path: 'Vite-Extra-React-SSR-TypeScript/.github/workflows/deploy.yml"
 name: Deploy to GitHub Pages
 
 on:

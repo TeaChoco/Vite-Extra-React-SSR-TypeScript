@@ -1,12 +1,13 @@
-//-Path: "TeaChoco-Portfolio/client/src/components/LanguageSwitcher.tsx"
+﻿//-Path: "TeaChoco-Portfolio/client/src/components/LanguageSwitcher.tsx"
+import type { Lang } from '~/i18n';
 import Select from '../custom/Select';
 import { useTranslation } from 'react-i18next';
 
 const languages = [
-    { code: 'en', label: 'English', flag: '🇺🇸' },
-    { code: 'th', label: 'ไทย', flag: '🇹🇭' },
-    { code: 'ja', label: '日本語', flag: '🇯🇵' },
-    { code: 'zh', label: '中文', flag: '🇨🇳' },
+    { code: 'en-US', label: 'English', flag: '🇺🇸' },
+    { code: 'th-TH', label: 'ไทย', flag: '🇹🇭' },
+    { code: 'ja-JP', label: '日本語', flag: '🇯🇵' },
+    { code: 'zh-CN', label: '中文', flag: '🇨🇳' },
 ] as const;
 
 export default function LanguageSwitcher() {
@@ -18,12 +19,14 @@ export default function LanguageSwitcher() {
         icon: <span className='text-lg leading-none'>{lang.flag}</span>,
     }));
 
+    const handleChange = (value: Lang) => i18n.changeLanguage(value);
+
     return (
         <Select
             value={i18n.language}
+            onChange={handleChange}
             options={languageOptions}
             className='py-3! px-4! rounded-lg! text-xs'
-            onChange={(lng) => i18n.changeLanguage(lng)}
         />
     );
 }

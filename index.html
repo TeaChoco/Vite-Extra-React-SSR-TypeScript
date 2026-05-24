@@ -25,9 +25,8 @@
                 }
             })(window.location);
             (function () {
-                const themeStore = localStorage.getItem('theme');
-                const themeState = themeStore ? JSON.parse(themeStore) : null;
-                const theme = themeState?.state?.theme || 'light';
+                const match = document.cookie.match(/(?:^|;\s*)theme=([^;]+)/);
+                const theme = match ? match[1] : null;
                 const isDarkSystem =
                     !theme && window.matchMedia('(prefers-color-scheme: dark)').matches;
                 if (theme === 'dark' || isDarkSystem)

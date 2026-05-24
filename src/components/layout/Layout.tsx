@@ -1,4 +1,4 @@
-//-Path: "TeaChoco-Portfolio/client/src/layout/Layout.tsx"
+﻿//-Path: "TeaChoco-Portfolio/client/src/layout/Layout.tsx"
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';

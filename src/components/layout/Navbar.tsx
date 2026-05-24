@@ -1,4 +1,4 @@
-//-Path: "vite-extra-react-ssr-ts/src/components/layout/Navbar.tsx"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/components/layout/Navbar.tsx"
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import ThemeToggle from '../config/ThemeToggle';
@@ -45,6 +45,7 @@ export default function Navbar() {
     const navLinks = [
         { to: '/', label: t('nav.home') },
         { to: '/about', label: t('nav.about') },
+        { to: '/auth', label: t('nav.auth') },
         { to: '/socket', label: t('nav.socket') },
         { to: '/threejs', label: t('nav.threejs') },
     ];

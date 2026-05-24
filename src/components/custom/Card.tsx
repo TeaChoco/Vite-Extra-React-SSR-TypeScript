@@ -1,4 +1,4 @@
-//-Path: "vite-extra-react-ssr-ts/src/components/custom/Card.tsx"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/components/custom/Card.tsx"
 
 interface CardProps {
     icon?: React.ReactNode;

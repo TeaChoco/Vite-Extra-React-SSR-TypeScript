@@ -1,9 +1,9 @@
-//-Path: "vite-extra-react-ssr-ts/src/pages/Socket.tsx"
-import Card from '$/components/custom/Card';
-import Badge from '$/components/custom/Badge';
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/pages/Socket.tsx"
+import Card from '~/components/custom/Card';
+import Badge from '~/components/custom/Badge';
 import { useTranslation } from 'react-i18next';
-import Button from '$/components/custom/Button';
-import { useSocketStore } from '$/stores/socketStore';
+import Button from '~/components/custom/Button';
+import { useSocketStore } from '~/stores/socket.store';
 import { FaBolt, FaPlug, FaUsers } from 'react-icons/fa6';
 
 export default function Socket() {

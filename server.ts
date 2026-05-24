@@ -1,4 +1,4 @@
-//-Path: "vite-extra-react-ssr-ts/server.ts"
+//-Path: 'Vite-Extra-React-SSR-TypeScript/server.ts"
 import os from 'node:os';
 import chalk from 'chalk';
 import dotenv from 'dotenv';
@@ -8,6 +8,7 @@ import { ViteDevServer } from 'vite';
 import compression from 'compression';
 import { Transform } from 'node:stream';
 import tailwindcss from '@tailwindcss/vite';
+import { createServer as createHttpServer } from 'node:http';
 
 type EntryServer = typeof import('./src/entry-server.tsx');
 
@@ -25,21 +26,22 @@ const isProduction: boolean = process.env.VITE_MODE === 'production';
 // Cached production assets
 const templateHtml = isProduction ? await fs.readFile('./dist/server/index.html', 'utf-8') : '';
 
-async function createServer() {
+async function createServer(): Promise<ReturnType<typeof createHttpServer>> {
     // Create http server
     const app = express();
+    const httpServer = createHttpServer(app);
 
     app.use(compression());
 
     // Add Vite or respective production middlewares
-    let vite: ViteDevServer;
+    let vite: ViteDevServer | null = null;
     if (!isProduction) {
         const { createServer } = await import('vite');
         vite = await createServer({
             base,
             appType: 'custom',
             plugins: [tailwindcss()],
-            server: { middlewareMode: true },
+            server: { middlewareMode: true, hmr: { server: httpServer } },
         });
         app.use(vite.middlewares);
     } else {
@@ -49,10 +51,10 @@ async function createServer() {
 
     // Serve HTML
     app.use('*all', async (req, res) => {
-        // ข้าม request ที่ไม่ใช่ HTML page
+        // skip request that are not HTML page
         const url = req.originalUrl;
 
-        // ตรวจสอบว่าเป็น request สำหรับไฟล์หรือไม่
+        // check if request is for asset file
         const isAsset = /\.(css|js|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot|map|json)$/i.test(
             url,
         );
@@ -60,24 +62,24 @@ async function createServer() {
         const isSocket = url.includes('/socket.io');
         const isApi = url.includes('/api/');
 
-        // ถ้าเป็น asset, well-known, socket, หรือ api => ไม่ต้อง render React
+        // if request is for asset, well-known, socket, or api => don't render React
         if (isAsset || isWellKnown || isSocket || isApi)
-            // ส่ง 404 หรือ next
+            // send 404 or next
             return res.status(404).end();
 
-        // ถ้าเป็น root และไม่มี basename ให้ redirect
+        // if request is for root and no basename redirect
         if (base !== '/' && (url === '/' || url === '')) return res.redirect(302, base);
         try {
             let template: string;
             let didError: boolean = false;
             let render: EntryServer['render'];
             let getHeadForRoute: EntryServer['getHeadForRoute'];
-            const requestUrl = req.originalUrl.replace(base, '').replace(/^\/?/, '/');
+            const pathname = req.originalUrl.replace(base, '').replace(/^\/?/, '/');
 
-            if (!isProduction) {
+            if (!isProduction && vite) {
                 // Always read fresh template in development
                 template = await fs.readFile('./index.html', 'utf-8');
-                template = await vite.transformIndexHtml(requestUrl, template);
+                template = await vite.transformIndexHtml(pathname, template);
                 const devModule = await vite.ssrLoadModule('/src/entry-server.tsx');
                 render = devModule.render;
                 getHeadForRoute = devModule.getHeadForRoute;
@@ -90,7 +92,7 @@ async function createServer() {
 
             const cookies = req.headers.cookie || '';
             const themeMatch = cookies.match(/theme=([^;]+)/);
-            const theme = themeMatch ? themeMatch[1] : 'dark';
+            const theme = themeMatch ? themeMatch[1] : 'light';
 
             if (theme === 'dark')
                 template = template.replace('<html lang="en">', '<html lang="en" class="dark">');
@@ -98,17 +100,17 @@ async function createServer() {
             const langMatch = cookies.match(/i18next=([^;]+)/);
             const lang = langMatch ? langMatch[1] : 'en';
 
-            const head = getHeadForRoute(url);
+            const head = getHeadForRoute(pathname);
             template = template.replace('<!--app-head-->', head);
 
-            const { pipe, abort } = render(url, lang, {
+            const { pipe, abort } = render(pathname, lang, {
                 async onShellError(error) {
                     res.status(500);
                     console.error('Shell Error:', error);
                     res.set({ 'Content-Type': 'text/html' });
-                    // ไม่ต้องส่ง error กลับไป client ถ้าเป็น Navigate error
+                    // don't send error back to client if it's Navigate error
                     if (error instanceof Error && error?.message?.includes('<Navigate>')) {
-                        // ส่งหน้า index กลับไปให้ client จัดการ navigation เอง
+                        // send index page back to client to handle navigation
                         const html = template.replace('<!--app-html-->', '');
                         res.status(200).set({ 'Content-Type': 'text/html' }).send(html);
                         return;
@@ -171,13 +173,13 @@ async function createServer() {
         }
     });
 
-    return app;
+    return httpServer;
 }
 
 // Start http server
 createServer()
-    .then((server) => {
-        server.listen(port, host, () => {
+    .then((httpServer) => {
+        httpServer.listen(port, host, async () => {
             const addresses: string[] = [];
             const interfaces = os.networkInterfaces();
             Object.values(interfaces).forEach((ifaces) =>
@@ -186,7 +188,7 @@ createServer()
                 }),
             );
             console.log(
-                `\n    ${chalk.green('VITE')} ${chalk.hex('#FF69B4')('Extra React TypeScript SSR')} by ${chalk.bold(chalk.blue('TeaChoco'))} ${chalk.gray(`ready in ${Date.now() - time} ms`)}\n`,
+                `\n    ${chalk.bold.green('VITE')} ${chalk.hex('#FF69B4')('Extra React TypeScript SSR')} by ${chalk.bold.blue('TeaChoco')} ${chalk.gray(`ready in ${Date.now() - time} ms`)}\n`,
             );
 
             console.log(

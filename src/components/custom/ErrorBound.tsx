@@ -1,4 +1,4 @@
-// -Path: "vite-react-typescript/src/components/custom/ErrorBound.tsx"
+﻿// -Path: "vite-react-typescript/src/components/custom/ErrorBound.tsx"
 import { Component } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 

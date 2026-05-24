@@ -1,4 +1,4 @@
-//-Path: "vite-extra-react-ssr-ts/src/components/custom/Button.tsx"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/components/custom/Button.tsx"
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: 'ghost' | 'outline' | 'surface' | 'primary' | 'secondary';

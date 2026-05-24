@@ -1,4 +1,4 @@
-// -Path: "vite-react-typescript/src/components/screen/RotatingBox.tsx"
+﻿// -Path: "vite-react-typescript/src/components/screen/RotatingBox.tsx"
 import { Mesh } from 'three';
 import { useRef } from 'react';
 import { Box } from '@react-three/drei';

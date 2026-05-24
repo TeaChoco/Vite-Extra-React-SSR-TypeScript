@@ -1,4 +1,4 @@
-//-Path: "vite-extra-react-ssr-ts/src/entry-client.tsx"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/entry-client.tsx'
 import './index.css';
 import App from './App';
 import env from './secure/env';

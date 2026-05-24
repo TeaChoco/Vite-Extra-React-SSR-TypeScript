@@ -1,6 +1,6 @@
-//-Path: "vite-extra-react-ssr-ts/src/entry-server.tsx"
+﻿//-Path: "Vite-Extra-React-SSR-TypeScript/src/entry-server.tsx"
 import App from './App';
-import i18n from './i18n/i18n';
+import i18n from './i18n';
 import env from './secure/env';
 import { StrictMode } from 'react';
 import { StaticRouter } from 'react-router-dom';

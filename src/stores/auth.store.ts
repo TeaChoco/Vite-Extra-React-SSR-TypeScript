@@ -1,6 +1,6 @@
-//-Path: "vite-extra-react-ssr-ts/src/stores/authStore.ts"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/stores/auth.store.ts"
 import { create } from 'zustand';
-import type { User } from '$/types/auth';
+import type { User } from '~/types/auth';
 
 interface AuthState {
     user: User | null | undefined;

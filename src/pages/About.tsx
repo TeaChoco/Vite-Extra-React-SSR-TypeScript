@@ -1,4 +1,4 @@
-//-Path: "vite-extra-react-ssr-ts/src/pages/About.tsx"
+﻿//-Path: 'Vite-Extra-React-SSR-TypeScript/src/pages/About.tsx"
 import {
     SiVite,
     SiReact,
@@ -10,8 +10,8 @@ import {
     SiSocketdotio,
     SiReactrouter,
 } from 'react-icons/si';
-import Card from '$/components/custom/Card';
-import Badge from '$/components/custom/Badge';
+import Card from '~/components/custom/Card';
+import Badge from '~/components/custom/Badge';
 import { useTranslation } from 'react-i18next';
 import { FaCubesStacked } from 'react-icons/fa6';
 
