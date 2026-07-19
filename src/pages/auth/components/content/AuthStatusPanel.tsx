@@ -119,10 +119,10 @@ export default function AuthStatusPanel({
                         className='space-y-4 pt-3 border-t border-border'
                     >
                         <div className='flex items-center gap-3'>
-                            {user.picture ? (
+                            {user.avatar ? (
                                 <img
                                     alt={user.name || 'User'}
-                                    src={user.picture || env.BASE + '/favicon.svg'}
+                                    src={user.avatar || env.BASE + '/favicon.svg'}
                                     className='w-12 h-12 rounded-full border-2 border-primary/30 object-cover shrink-0'
                                 />
                             ) : (

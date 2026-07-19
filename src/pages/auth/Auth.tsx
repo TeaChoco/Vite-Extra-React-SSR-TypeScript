@@ -22,7 +22,7 @@ export default function Auth() {
                 userId: payload.userId,
                 name: payload.name,
                 email: payload.email,
-                picture: payload.picture,
+                avatar: payload.avatar,
                 createdAt: payload.createdAt ? new Date(payload.createdAt) : undefined,
                 updatedAt: payload.updatedAt ? new Date(payload.updatedAt) : undefined,
             } satisfies User);

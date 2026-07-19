@@ -5,7 +5,7 @@ export interface User {
     googleId?: string;
     name?: string;
     email?: string;
-    picture?: string;
+    avatar?: string;
     role?: string;
     lastLoginAt?: Date;
     createdAt?: Date;

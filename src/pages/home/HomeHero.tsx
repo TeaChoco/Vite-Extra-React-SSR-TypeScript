@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom';
 import viteLogo from '~/assets/vite.svg';
 import reactLogo from '~/assets/react.svg';
 import Badge from '~/components/custom/Badge';
-import Button from '~/components/custom/Button';
 import { SiTypescript } from 'react-icons/si';
 import { useTranslation } from 'react-i18next';
+import Button from '~/components/custom/Button';
+import { version } from '../../../package.json';
 
 export default function HomeHero() {
     const { t } = useTranslation();
@@ -28,6 +29,7 @@ export default function HomeHero() {
             >
                 <Badge variant='info' className='mb-6'>
                     ⚡ Vite + React + TypeScript
+                    <span className='ml-2 text-xs opacity-70 font-mono'>v{version}</span>
                 </Badge>
 
                 <div className='flex items-center justify-center gap-6 mb-8'>

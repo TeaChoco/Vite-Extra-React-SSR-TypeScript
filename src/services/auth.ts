@@ -23,7 +23,7 @@ export interface SigninResult {
 export interface UpdateUserPayload {
     name?: string;
     email?: string;
-    picture?: string;
+    avatar?: string;
 }
 
 export const authAPI = {

@@ -85,6 +85,7 @@ async function createServer(): Promise<ReturnType<typeof createHttpServer>> {
                 getHeadForRoute = devModule.getHeadForRoute;
             } else {
                 template = templateHtml;
+                // @ts-expect-error
                 const prodModule = await import('./dist/server/entry-server.js');
                 render = prodModule.render;
                 getHeadForRoute = prodModule.getHeadForRoute;
