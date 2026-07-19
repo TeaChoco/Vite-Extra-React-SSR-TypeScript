@@ -3,8 +3,8 @@ import App from './App';
 import i18n from './i18n';
 import env from './secure/env';
 import { StrictMode } from 'react';
+import Providers from './providers/Providers';
 import { StaticRouter } from 'react-router-dom';
-import Providers from './components/layout/Providers';
 import { renderToPipeableStream, type RenderToPipeableStreamOptions } from 'react-dom/server';
 
 interface RouteMeta {

@@ -1,7 +1,7 @@
 {
   "name": "vite-extra-react-ssr-ts",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
@@ -46,7 +46,7 @@
     "@tailwindcss/postcss": "^4.3.0",
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.6",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.9.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.184.1",

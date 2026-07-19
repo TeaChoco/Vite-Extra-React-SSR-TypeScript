@@ -144,6 +144,11 @@ async function createServer(): Promise<ReturnType<typeof createHttpServer>> {
                         },
                     });
                     transformStream.on('finish', () => {
+                        if (didError) {
+                            res.write(
+                                `<script>document.documentElement.innerHTML='<body style="font-family:sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;margin:0"><div><h1>Something went wrong</h1><p>Please try refreshing the page.</p></div></body>'</script>`,
+                            );
+                        }
                         res.write(htmlEnd);
                         res.end();
                     });
@@ -154,6 +159,7 @@ async function createServer(): Promise<ReturnType<typeof createHttpServer>> {
                 onError(error) {
                     didError = true;
                     console.error('render on Error: ', error);
+                    abort();
                 },
             });
             setTimeout(() => abort(), ABORT_DELAY);
