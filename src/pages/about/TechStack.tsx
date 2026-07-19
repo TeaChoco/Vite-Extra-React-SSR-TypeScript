@@ -2,6 +2,7 @@
 import {
     SiVite,
     SiReact,
+    SiFramer,
     SiExpress,
     SiI18Next,
     SiTypescript,
@@ -10,20 +11,21 @@ import {
     SiSocketdotio,
     SiReactrouter,
 } from 'react-icons/si';
-import { FaCubesStacked } from 'react-icons/fa6';
 import { useTranslation } from 'react-i18next';
+import { FaCubesStacked } from 'react-icons/fa6';
 
 const techStack = [
+    { name: 'TypeScript 6', color: 'text-[#3178C6]', icon: <SiTypescript /> },
     { name: 'Vite 8', color: 'text-[#646CFF]', icon: <SiVite /> },
     { name: 'React 19', color: 'text-[#61DAFB]', icon: <SiReact /> },
     { name: 'i18next 26', color: 'text-[#26A69A]', icon: <SiI18Next /> },
-    { name: 'TypeScript 6', color: 'text-[#3178C6]', icon: <SiTypescript /> },
     { name: 'Tailwind CSS 4', color: 'text-[#06B6D4]', icon: <SiTailwindcss /> },
     { name: 'React Router 7', color: 'text-[#CA4245]', icon: <SiReactrouter /> },
     { name: 'Express 5', color: 'text-[#000000] dark:text-white', icon: <SiExpress /> },
     { name: 'Three.js', color: 'text-[#010101] dark:text-white', icon: <SiThreedotjs /> },
-    { name: 'Zustand 5', color: 'text-[#433929] dark:text-warning', icon: <FaCubesStacked /> },
     { name: 'Socket.io 4', color: 'text-[#010101] dark:text-white', icon: <SiSocketdotio /> },
+    { name: 'Zustand 5', color: 'text-[#433929] dark:text-warning', icon: <FaCubesStacked /> },
+    { name: 'Framer Motion 12', color: 'text-[#E10098]', icon: <SiFramer /> },
 ];
 
 export default function TechStack() {

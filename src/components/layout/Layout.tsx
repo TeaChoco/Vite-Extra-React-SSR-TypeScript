@@ -2,12 +2,12 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Outlet } from 'react-router-dom';
-import { ErrorBoundaryProvider } from '../custom/ErrorBound';
+import { ToasterProvider } from '../provider/TasterProvider';
 
 export default function Layout() {
     return (
         <div className='flex flex-col min-h-dvh overflow-auto'>
-            <ErrorBoundaryProvider />
+            <ToasterProvider />
             <Navbar />
             <main className='flex-1'>
                 <Outlet />

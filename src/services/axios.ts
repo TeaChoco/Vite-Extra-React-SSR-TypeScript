@@ -3,7 +3,7 @@ import axios from 'axios';
 import env from '~/secure/env';
 
 const serverRest = axios.create({
-    baseURL: env.API_URL,
+    baseURL: `${env.API_URL}/api`,
     withCredentials: true,
     headers: {
         'Content-Type': 'application/json',

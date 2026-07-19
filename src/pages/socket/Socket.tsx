@@ -1,11 +1,11 @@
 // -Path: 'Vite-React-TypeScript/src/pages/socket/Socket.tsx'
 import SocketHero from './SocketHero';
-import { motion } from 'framer-motion';
 import SocketInfo from './SocketInfo';
+import { motion } from 'framer-motion';
 import PlayerCount from './PlayerCount';
+import { useTranslation } from 'react-i18next';
 import Button from '~/components/custom/Button';
 import { FaBolt, FaPlug } from 'react-icons/fa6';
-import { useTranslation } from 'react-i18next';
 import ConnectionStatus from './ConnectionStatus';
 import { useSocketStore } from '~/stores/socket.store';
 

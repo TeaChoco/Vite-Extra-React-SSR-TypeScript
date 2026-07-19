@@ -1,6 +1,6 @@
 ﻿// -Path: "vite-react-typescript/src/components/custom/ErrorBound.tsx"
 import { Component } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 interface Props {
     showToast?: boolean;
@@ -63,9 +63,12 @@ class ErrorBoundary extends Component<Props, State> {
         };
 
         if (navigator.clipboard?.writeText) {
-            navigator.clipboard.writeText(text).then(onSuccess).catch(() => {
-                if (!copyFallback(text)) onFail();
-            });
+            navigator.clipboard
+                .writeText(text)
+                .then(onSuccess)
+                .catch(() => {
+                    if (!copyFallback(text)) onFail();
+                });
         } else {
             if (!copyFallback(text)) onFail();
             else onSuccess();
@@ -182,34 +185,3 @@ class ErrorBoundary extends Component<Props, State> {
 }
 
 export default ErrorBoundary;
-
-export const ErrorBoundaryProvider = () => (
-    <Toaster
-        position='top-center'
-        reverseOrder={false}
-        gutter={8}
-        containerClassName=''
-        containerStyle={{}}
-        toastOptions={{
-            duration: 5000, // default duration สำหรับ toast ปกติ
-            style: {
-                background: '#363636',
-                color: '#fff',
-            },
-            success: {
-                duration: 3000,
-                iconTheme: {
-                    primary: '#22c55e',
-                    secondary: '#fff',
-                },
-            },
-            error: {
-                duration: 8000, // error toast นานขึ้น
-                iconTheme: {
-                    primary: '#ef4444',
-                    secondary: '#fff',
-                },
-            },
-        }}
-    />
-);

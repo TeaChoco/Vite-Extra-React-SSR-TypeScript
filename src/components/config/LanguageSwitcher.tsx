@@ -1,6 +1,6 @@
 ﻿//-Path: "TeaChoco-Portfolio/client/src/components/LanguageSwitcher.tsx"
-import type { Lang } from '~/i18n';
 import Select from '../custom/Select';
+import type { Lang } from '~/i18n/locales';
 import { useTranslation } from 'react-i18next';
 
 const languages = [
@@ -23,9 +23,9 @@ export default function LanguageSwitcher() {
 
     return (
         <Select
-            value={i18n.language}
             onChange={handleChange}
             options={languageOptions}
+            value={i18n.language as Lang}
             className='py-3! px-4! rounded-lg! text-xs'
         />
     );

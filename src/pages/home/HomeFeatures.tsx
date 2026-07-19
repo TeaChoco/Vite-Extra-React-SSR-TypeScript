@@ -6,12 +6,12 @@ import { useTranslation } from 'react-i18next';
 import { FaBolt, FaGlobe, FaRoute, FaPalette, FaCubesStacked, FaServer } from 'react-icons/fa6';
 
 const features = [
-    { key: 'ssr', icon: <FaServer className='w-5 h-5' /> },
-    { key: 'routing', icon: <FaRoute className='w-5 h-5' /> },
-    { key: 'i18n', icon: <FaGlobe className='w-5 h-5' /> },
-    { key: 'theme', icon: <FaPalette className='w-5 h-5' /> },
-    { key: 'socket', icon: <FaBolt className='w-5 h-5' /> },
-    { key: 'state', icon: <FaCubesStacked className='w-5 h-5' /> },
+    { key: 'ssr', Icon: FaServer },
+    { key: 'routing', Icon: FaRoute },
+    { key: 'i18n', Icon: FaGlobe },
+    { key: 'theme', Icon: FaPalette },
+    { key: 'socket', Icon: FaBolt },
+    { key: 'state', Icon: FaCubesStacked },
 ] as const;
 
 export default function HomeFeatures() {
@@ -33,10 +33,10 @@ export default function HomeFeatures() {
                 </div>
 
                 <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-                    {features.map(({ key, icon }) => (
+                    {features.map(({ key, Icon }) => (
                         <Card
                             key={key}
-                            icon={icon}
+                            icon={<Icon className='w-5 h-5' />}
                             title={t(`features.${key}.title`)}
                             description={t(`features.${key}.description`)}
                         >
