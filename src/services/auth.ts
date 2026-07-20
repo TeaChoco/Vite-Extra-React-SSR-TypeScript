@@ -33,7 +33,7 @@ export const authAPI = {
     logout: () => serverRest.get('/user/auth/signout'),
     googleLogin: () => {
         const redirectUri = `${window.location.origin}${env.BASE}auth`;
-        window.location.href = `${env.API_URL}/user/auth/google?redirect_uri=${encodeURIComponent(redirectUri)}`;
+        window.location.href = `${env.API_URL}/api/user/auth/google?redirect_uri=${encodeURIComponent(redirectUri)}`;
     },
     updateUser: (data: UpdateUserPayload) => serverRest.put<User>('/user/auth', data),
 };
